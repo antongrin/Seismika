@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Complex trace attributes &#8212; Seismika</title>
+    <title>Complex trace attributes</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -82,8 +82,6 @@
       
       <img src="../../_static/SEISMIKA_Logo.png" class="logo" alt="logo">
       
-      
-      <h1 class="site-logo" id="site-title">Seismika</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -183,11 +181,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/antongrin/Seismika/"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapters/SignalProcessing/Complex_trace_attr.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/antongrin/Seismika//issues/new?title=Issue%20on%20page%20%2FChapters/SignalProcessing/Complex_trace_attr.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -208,7 +206,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Chapters/SignalProcessing/Complex_trace_attr.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/antongrin/Seismika/main?urlpath=tree/docs/Chapters/SignalProcessing/Complex_trace_attr.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -232,27 +230,27 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   Introduction
+   Introduction 🎍
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objectives">
-   Objectives
+   Objectives 🎯
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#import-a-trace">
-   Import a trace
+   Import a trace 📥
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-complex-trace">
-   A complex trace
+   A complex trace 🪢
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Complex trace attributes
+   Complex trace attributes ➿
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -301,12 +299,12 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#main-question">
-   Main question
+   Main question ❔
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#related-topics">
-   Related topics
+   Related topics 🔗
   </a>
  </li>
 </ul>
@@ -321,9 +319,9 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="complex-trace-attributes">
-<h1>Complex trace attributes<a class="headerlink" href="#complex-trace-attributes" title="Permalink to this headline">¶</a></h1>
+<span id="complex-trace-page"></span><h1>Complex trace attributes<a class="headerlink" href="#complex-trace-attributes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction 🎍<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>In this page, we are going to compute and discuss attributes of complex seismic trace. These attributes are quite useful, even popular, in seismic interpretation.</p>
 <p>A <em>complex trace</em> is a mathematical abstraction. In reality, seismic data are represented by real numbers, not complex. Consequently, we need to add something ‘imaginary’ to the data in order to obtain a <em>complex</em> seismic trace. What is this imaginary part? For complex seismic trace, the imaginary part is a result of <a class="reference external" href="https://en.wikipedia.org/wiki/Hilbert_transform">Hilbert transform</a> applied to the original trace. In frequency domain, Hilbert transform means rotating the phase of signal by 90°. It is fairly intuitive and can be easily computed. This phase-rotated signal is aslo referred to as <em>quadrature trace</em>.</p>
 <p>Thus, complex trace <span class="math notranslate nohighlight">\(F(t)\)</span> can be represented by the following equation:</p>
@@ -345,7 +343,7 @@ F(t) = f(t) + if^*(t)
 </div>
 </div>
 <div class="section" id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
+<h2>Objectives 🎯<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Import a seismic trace</p></li>
 <li><p>Apply Hilbert transform, compute a complex trace</p></li>
@@ -354,7 +352,7 @@ F(t) = f(t) + if^*(t)
 </ol>
 </div>
 <div class="section" id="import-a-trace">
-<h2>Import a trace<a class="headerlink" href="#import-a-trace" title="Permalink to this headline">¶</a></h2>
+<h2>Import a trace 📥<a class="headerlink" href="#import-a-trace" title="Permalink to this headline">¶</a></h2>
 <p>For this experiment, I have a real seismic trace in ASCII text format. It can be imported with <code class="docutils literal notranslate"><span class="pre">np.loadtxt</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -421,7 +419,7 @@ F(t) = f(t) + if^*(t)
 </div>
 </div>
 <div class="section" id="a-complex-trace">
-<h2>A complex trace<a class="headerlink" href="#a-complex-trace" title="Permalink to this headline">¶</a></h2>
+<h2>A complex trace 🪢<a class="headerlink" href="#a-complex-trace" title="Permalink to this headline">¶</a></h2>
 <p>Conveniently, <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library has Hilbert trasform implemented in function <code class="docutils literal notranslate"><span class="pre">scipy.signal.hilbert</span></code>. It returns a complex trace: its real part equals to the original signal and imaginary part is the quadrature trace.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,7 +489,7 @@ F(t) = f(t) + if^*(t)
 </div>
 </div>
 <div class="section" id="id1">
-<h2>Complex trace attributes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>Complex trace attributes ➿<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="instantaneous-amplitude">
 <h3>Instantaneous amplitude<a class="headerlink" href="#instantaneous-amplitude" title="Permalink to this headline">¶</a></h3>
 <p>Instantaneous amplitude (or amplitude envelope) can be thought of as a measure of amplitude intensity. According to <a class="reference external" href="https://doi.org/10.1190/1.9781560803324">A. E. Barnes</a>, “At a given time, it represents the magnitude of the sinusoid that best matches the seismic trace in a small window about that time”. Another fact about instantaneous amplitude: at each time sample, it equals the maximum amplitude that can be reached by constant phase rotation of trace, hence the name “envelope”.</p>
@@ -767,7 +765,7 @@ F(t) = f(t) + if^*(t)
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.07</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.09</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">)</span>
 
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">inst_freq</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;#96c019&#39;</span><span class="p">)</span>
@@ -791,7 +789,7 @@ F(t) = f(t) + if^*(t)
 </div>
 <div class="section" id="other-attributes">
 <h3>Other attributes<a class="headerlink" href="#other-attributes" title="Permalink to this headline">¶</a></h3>
-<p>There are plenty of derived attributes of complex trace, such as sweetness, instantaneous bandwidth, apparent polarity and so on. If interested, we’d recommend a description in <span id="id2">[]</span>.</p>
+<p>There are plenty of derived attributes of complex trace, such as sweetness, instantaneous bandwidth, apparent polarity and so on. If interested, we’d recommend a description in <a class="reference external" href="https://library.seg.org/doi/book/10.1190/1.9781560803324">[Barnes, 2016]</a>.</p>
 </div>
 </div>
 <div class="section" id="appendix-a-complex-trace-spectrum">
@@ -868,17 +866,17 @@ F(t) = f(t) + if^*(t)
 </div>
 <div class="section" id="appendix-b-phase-acceleration">
 <h2>Appendix B: Phase acceleration<a class="headerlink" href="#appendix-b-phase-acceleration" title="Permalink to this headline">¶</a></h2>
-<p>As an experiment, it may be interesting to perform ‘phase acceleration’, or ‘phase multiplication’. It is an artificial technique that is sometimes used to increase number of peaks and troughs in data. As an addition, this broadens the spectrum.</p>
-<p><span id="id3">[]</span></p>
-<p><span id="id4">[]</span></p>
-<p>Recall the seismic trace can be represented as:
-$<span class="math notranslate nohighlight">\(
-f(t) = \mathrm{IA} \cdot \cos(\mathrm{IP})
-\)</span>$</p>
-<p><em>n</em>-times accelerated trace is created as follows:
-$<span class="math notranslate nohighlight">\(
+<p>As an experiment, it may be interesting to perform ‘phase acceleration’, or ‘phase multiplication’. It is an artificial technique that is sometimes used to increase number of peaks and troughs in data. As an addition, this broadens the spectrum. More informaton can be found in <a class="reference external" href="https://library.seg.org/doi/10.1190/1.3255039">[Stark, 2009]</a>, <a class="reference external" href="https://library.seg.org/doi/10.1190/geo2015-0572.1">[Liang, 2017]</a></p>
+<p>Recall the seismic trace can be represented as:</p>
+<div class="math notranslate nohighlight">
+\[
+f(t) = \mathrm{IA} \cdot \cos(\mathrm{IP}) $
+\]</div>
+<p><em>n</em>-times accelerated trace is created as follows:</p>
+<div class="math notranslate nohighlight">
+\[
 f_n (t) = \mathrm{IA} \cdot \cos(n \cdotp \mathrm{IP})
-\)</span>$</p>
+\]</div>
 <p>If the unwrapped version of phase is used, N can even be non-integer or less than 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1053,11 +1051,11 @@ f_n (t) = \mathrm{IA} \cdot \cos(n \cdotp \mathrm{IP})
 </ol>
 </div>
 <div class="section" id="main-question">
-<h2>Main question<a class="headerlink" href="#main-question" title="Permalink to this headline">¶</a></h2>
+<h2>Main question ❔<a class="headerlink" href="#main-question" title="Permalink to this headline">¶</a></h2>
 <p>The main question (to me it stays unanswered) is: why this works? Why do we get something that curls up so cool by simply adding 90°-rotated trace as an imaginary part to the real trace? Why is it informative? Are there other such transfomations?</p>
 </div>
 <div class="section" id="related-topics">
-<h2>Related topics<a class="headerlink" href="#related-topics" title="Permalink to this headline">¶</a></h2>
+<h2>Related topics 🔗<a class="headerlink" href="#related-topics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Discrete Fourier Transform</p></li>
 <li><p>Synthetic trace</p></li>

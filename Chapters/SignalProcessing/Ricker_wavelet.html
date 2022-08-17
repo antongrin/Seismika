@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ricker wavelet and its spectrum &#8212; Seismika</title>
+    <title>Ricker wavelet and its spectrum</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -82,8 +82,6 @@
       
       <img src="../../_static/SEISMIKA_Logo.png" class="logo" alt="logo">
       
-      
-      <h1 class="site-logo" id="site-title">Seismika</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -183,11 +181,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/antongrin/Seismika/"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapters/SignalProcessing/Ricker_wavelet.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/antongrin/Seismika//issues/new?title=Issue%20on%20page%20%2FChapters/SignalProcessing/Ricker_wavelet.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -208,7 +206,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Chapters/SignalProcessing/Ricker_wavelet.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/antongrin/Seismika/main?urlpath=tree/docs/Chapters/SignalProcessing/Ricker_wavelet.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -232,37 +230,37 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   Introduction
+   Introduction 🎍
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objectives">
-   Objectives
+   Objectives 🎯
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#generate-a-ricker-wavelet">
-   Generate a Ricker wavelet
+   Generate a Ricker wavelet 🆕
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compute-its-spectrum">
-   Compute its spectrum
+   Compute its spectrum 🌈
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#zero-phase-ricker-wavelet">
-   Zero-Phase Ricker wavelet
+   Zero-Phase Ricker wavelet ⚖️
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#constant-phase-ricker-wavelet">
-   Constant-phase Ricker wavelet
+   Constant-phase Ricker wavelet ➖
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#related-topics">
-   Related topics
+   Related topics 🔗
   </a>
  </li>
 </ul>
@@ -279,7 +277,7 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="ricker-wavelet-and-its-spectrum">
 <h1>Ricker wavelet and its spectrum<a class="headerlink" href="#ricker-wavelet-and-its-spectrum" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction 🎍<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>A Ricker wavelet is a signal commonly used in seismic interpretation, modelling and inversion. It has a relatively simple visual form with a positive peak and two negative side-lobes.</p>
 <p>Sometimes it is referred to as <em>Mexican hat wavelet</em>.</p>
 <div class="figure align-default" id="sombrero">
@@ -299,7 +297,7 @@
 </div>
 </div>
 <div class="section" id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
+<h2>Objectives 🎯<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Generate a Ricker wavelet given its dominant frequency</p></li>
 <li><p>Plot its time response and frequency spectrum</p></li>
@@ -307,7 +305,7 @@
 </ol>
 </div>
 <div class="section" id="generate-a-ricker-wavelet">
-<h2>Generate a Ricker wavelet<a class="headerlink" href="#generate-a-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
+<h2>Generate a Ricker wavelet 🆕<a class="headerlink" href="#generate-a-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
 <p>First, we need to set the peak dominant frequency of the wavelet (<span class="math notranslate nohighlight">\(f\)</span> term in the formula), let’s say 30 Hz. Since typical frequencies of seismic signals fall between 10 and 100 Hz, that would be appropriate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -359,7 +357,7 @@
 </div>
 </div>
 <div class="section" id="compute-its-spectrum">
-<h2>Compute its spectrum<a class="headerlink" href="#compute-its-spectrum" title="Permalink to this headline">¶</a></h2>
+<h2>Compute its spectrum 🌈<a class="headerlink" href="#compute-its-spectrum" title="Permalink to this headline">¶</a></h2>
 <p>If the spectrum of the wavelet is <span class="math notranslate nohighlight">\(Z\)</span> (array of complex numbers), then its amplitude spectrum is <span class="math notranslate nohighlight">\(|Z|\)</span> and phase spectrum is <span class="math notranslate nohighlight">\(arg(Z)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -424,7 +422,7 @@
 <p>Then why does the phase differ from zero? How does the <em>true</em> zero-phase wavelet look like?</p>
 </div>
 <div class="section" id="zero-phase-ricker-wavelet">
-<h2>Zero-Phase Ricker wavelet<a class="headerlink" href="#zero-phase-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
+<h2>Zero-Phase Ricker wavelet ⚖️<a class="headerlink" href="#zero-phase-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
 <p>The apparent contradiction mentioned above comes from the fact that the time-vector did not count in FFT.</p>
 <p>Indeed, to compute the spectrum we simply passed variable <code class="docutils literal notranslate"><span class="pre">w</span></code> to the <code class="docutils literal notranslate"><span class="pre">fft</span></code> function, ignoring time-vector <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p>
 <p>Thus, the above spectra were the spectra of the following signal (pay attention to the x-axis):</p>
@@ -523,7 +521,7 @@ However, the imaginary part of new wavelet is not perfectly zero due to computat
 </div>
 </div>
 <div class="section" id="constant-phase-ricker-wavelet">
-<h2>Constant-phase Ricker wavelet<a class="headerlink" href="#constant-phase-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
+<h2>Constant-phase Ricker wavelet ➖<a class="headerlink" href="#constant-phase-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
 <p>As an experiment, why not introduce a constant phase shift to the wavelet? Let’s say, 60 degrees (which is <span class="math notranslate nohighlight">\(\pi/3\)</span>).</p>
 <p>Here, we should not forget about the symmetry of the phase spectrum which must be an odd function for real signals. Hence we have to add 60° to ‘positive’ frequencies and subtract 60° from so-called ‘negative’ frequencies. We start with a ‘normal’ good-looking wavelet (with maximum in the middle).</p>
 <div class="cell docutils container">
@@ -575,11 +573,11 @@ However, the imaginary part of new wavelet is not perfectly zero due to computat
 <p>The imaginary enveloping line that is tangent to each wavelet of this set is called <em>Instantaneous Amplitude</em> or <em>Amplitude Envelope</em>.</p>
 </div>
 <div class="section" id="related-topics">
-<h2>Related topics<a class="headerlink" href="#related-topics" title="Permalink to this headline">¶</a></h2>
+<h2>Related topics 🔗<a class="headerlink" href="#related-topics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Discrete Fourier Transform</p></li>
 <li><p>Synthetic trace</p></li>
-<li><p>Seismic attributes: complex trace</p></li>
+<li><p><a class="reference internal" href="Complex_trace_attr.html#complex-trace-page"><span class="std std-ref">Seismic attributes: complex trace</span></a></p></li>
 </ul>
 <hr class="docutils" />
 <p><sub>Created on Dec 6, 2021</sub></p>
