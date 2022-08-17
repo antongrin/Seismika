@@ -1,0 +1,13 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: Chapters/intro
+parts:
+  - caption: Signal processing
+    chapters:
+    - file: Chapters/SignalProcessing/Ricker_wavelet
+    - file: Chapters/SignalProcessing/Complex_trace_attr
+  - caption: Rock Physics and anisotropy
+    chapters:
+    - file: Chapters/Rock_Elasticity_Anisotropy/Backus_Averaging
