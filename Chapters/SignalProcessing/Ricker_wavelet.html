@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ricker wavelet and its spectrum &#8212; Seismika</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Complex trace attributes" href="Complex_trace_attr.html" />
+    <link rel="prev" title="Seismika" href="../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/SEISMIKA_Logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Seismika</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Seismika
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Signal processing
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Ricker wavelet and its spectrum
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Complex_trace_attr.html">
+   Complex trace attributes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Rock Physics and anisotropy
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Rock_Elasticity_Anisotropy/Backus_Averaging.html">
+   Backus Averaging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Chapters/SignalProcessing/Ricker_wavelet.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapters/SignalProcessing/Ricker_wavelet.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Chapters/SignalProcessing/Ricker_wavelet.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectives">
+   Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-a-ricker-wavelet">
+   Generate a Ricker wavelet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compute-its-spectrum">
+   Compute its spectrum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zero-phase-ricker-wavelet">
+   Zero-Phase Ricker wavelet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constant-phase-ricker-wavelet">
+   Constant-phase Ricker wavelet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#related-topics">
+   Related topics
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="ricker-wavelet-and-its-spectrum">
+<h1>Ricker wavelet and its spectrum<a class="headerlink" href="#ricker-wavelet-and-its-spectrum" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>A Ricker wavelet is a signal commonly used in seismic interpretation, modelling and inversion. It has a relatively simple visual form with a positive peak and two negative side-lobes.</p>
+<p>Sometimes it is referred to as <em>Mexican hat wavelet</em>.</p>
+<div class="figure align-default" id="sombrero">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/sombrero.png"><img alt="Sombrero from Collins Dictionary" class="bg-primary mb-1" src="../../_images/sombrero.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Ricker wavelet / Mexican hat / sombrero</span><a class="headerlink" href="#sombrero" title="Permalink to this image">¶</a></p>
+</div>
+<p>Analytically, it has a following representation in time domain:</p>
+<div class="math notranslate nohighlight">
+\[A(t) = (1-2 \pi^2 f^2 t^2) e^{-\pi^2 f^2 t^2}\]</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://wiki.seg.org/wiki/Dictionary:Ricker_wavelet">Ricker wavelet in SEG dictionary</a></p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.ricker.html">Ricker wavelet in <em>scipy</em></a></p></li>
+<li><p><a class="reference external" href="https://subsurfwiki.org/wiki/Ricker_wavelet">Ricker wavelet in <em>SubSurfWiki</em></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Generate a Ricker wavelet given its dominant frequency</p></li>
+<li><p>Plot its time response and frequency spectrum</p></li>
+<li><p>Apply phase rotation to the wavelet</p></li>
+</ol>
+</div>
+<div class="section" id="generate-a-ricker-wavelet">
+<h2>Generate a Ricker wavelet<a class="headerlink" href="#generate-a-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
+<p>First, we need to set the peak dominant frequency of the wavelet (<span class="math notranslate nohighlight">\(f\)</span> term in the formula), let’s say 30 Hz. Since typical frequencies of seismic signals fall between 10 and 100 Hz, that would be appropriate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span> <span class="o">=</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Second, let’s define a <em>time</em> vector (array). As the wavelet reaches highest amplitude when time is zero, it is convenient to have a zero-centered time vector.</p>
+<p>Normally, in seismic exploration we work with time sampling rate of 0.5, 1, or 2 milliseconds.</p>
+<p>Here, let the time-vector span from -0.05 to 0.05 seconds with a step of 1 ms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.05</span>
+<span class="n">tmax</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">NSamples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Time and frequency having been set up, we can proceed to computation of amplitudes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">exp</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">freq</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">freq</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time, s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_16_0.png" src="../../_images/Ricker_wavelet_16_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="compute-its-spectrum">
+<h2>Compute its spectrum<a class="headerlink" href="#compute-its-spectrum" title="Permalink to this headline">¶</a></h2>
+<p>If the spectrum of the wavelet is <span class="math notranslate nohighlight">\(Z\)</span> (array of complex numbers), then its amplitude spectrum is <span class="math notranslate nohighlight">\(|Z|\)</span> and phase spectrum is <span class="math notranslate nohighlight">\(arg(Z)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+ Z = |Z| \cdot e^{j \cdot arg(Z)}
+\]</div>
+<p>Fourier spectrum can be computed by Discrete Fourier Transform (<code class="docutils literal notranslate"><span class="pre">fft</span></code> function in <code class="docutils literal notranslate"><span class="pre">scipy.fftpack</span></code> module). We can also easily determine its amplitude and phase by applying <code class="docutils literal notranslate"><span class="pre">abs</span></code> and <code class="docutils literal notranslate"><span class="pre">angle</span></code> functions of <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">ifft</span><span class="p">,</span> <span class="n">fftfreq</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="n">AS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">PS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">AS</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Phase spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">PS</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Amplitude spectrum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_22_0.png" src="../../_images/Ricker_wavelet_22_0.png" />
+</div>
+</div>
+<p>What do we see here?</p>
+<p>First, the amplitude and phase spectra are symmetric with respect to the center. We covered this in another page.</p>
+<p>Second, the amplitude spectrum has a clear maximum at a certain point. We can expect this point to correspond to the dominant frequency of the wavelet. This can be verified by computing FFT frequencies (via <code class="docutils literal notranslate"><span class="pre">fftfreq</span></code>, for example) and making another plot. We omit the “mirrored” part of the spectra here, zooming-in on range from 0 to 250 Hz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="n">NSamples</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">AS</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Amplitude spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">PS</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Phase spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Dominant frequency&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_26_0.png" src="../../_images/Ricker_wavelet_26_0.png" />
+</div>
+</div>
+<p>Third, the phase spectrum is non-zero, which is somewhat surprising! We did not expect this to happen since the amplitude at zero-time is maximum and the wavelet is perfectly symmetric.</p>
+<p>Then why does the phase differ from zero? How does the <em>true</em> zero-phase wavelet look like?</p>
+</div>
+<div class="section" id="zero-phase-ricker-wavelet">
+<h2>Zero-Phase Ricker wavelet<a class="headerlink" href="#zero-phase-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
+<p>The apparent contradiction mentioned above comes from the fact that the time-vector did not count in FFT.</p>
+<p>Indeed, to compute the spectrum we simply passed variable <code class="docutils literal notranslate"><span class="pre">w</span></code> to the <code class="docutils literal notranslate"><span class="pre">fft</span></code> function, ignoring time-vector <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p>
+<p>Thus, the above spectra were the spectra of the following signal (pay attention to the x-axis):</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_30_0.png" src="../../_images/Ricker_wavelet_30_0.png" />
+</div>
+</div>
+<p>This wavelet is actually <strong>not</strong> zero-phase! It has a maximum at the middle-sample (at time 0.05 s) rather than at 0.</p>
+<p>So let’s try and create the new Ricker wavelet, with phase equal to 0.</p>
+<p>In order to achieve this, we have to:</p>
+<ol class="simple">
+<li><p>Leave its amplitude unchanged;</p></li>
+<li><p>Replace phase spectrum by zeros;</p></li>
+<li><p>Take the inverse Fourier transform of the new spectrum;</p></li>
+</ol>
+<p>For that, we will multiply the phase spectrum <code class="docutils literal notranslate"><span class="pre">PS</span></code> of wavelet <code class="docutils literal notranslate"><span class="pre">w</span></code> by zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AS0</span> <span class="o">=</span> <span class="n">AS</span>
+<span class="n">PS0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">PS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">AS0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Amplitude spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">PS0</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Phase spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_35_0.png" src="../../_images/Ricker_wavelet_35_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real_if_close</span><span class="p">(</span><span class="n">ifft</span><span class="p">(</span><span class="n">AS0</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">PS0</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">w0</span></code> is the new wavelet obtained by zeroing the phase of original Ricker wavelet.</p>
+<p>Therefore, denoting zero-phase spectrum by Z<sub>0</sub>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray*}
+&amp; arg(Z_0) = 0, \\
+&amp; Z_0 = |Z_0| \cdot e^{j \cdot arg(Z_0)} = |Z_0|
+\end{eqnarray*}
+\end{split}\]</div>
+<p>We expect Z<sub>0</sub> to be <strong>real</strong>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">What is np.real_if_close and why we need it here</p>
+<p>Generally, the wavelet resulting from inverse FFT is complex. In our particular case, we expect the wavelet to be real (because its spectrum is symmetric).
+However, the imaginary part of new wavelet is not perfectly zero due to computational issues. But it is so small (order of 1*10<sup>-17</sup>) that can be neglected with no negative effect. For such sutuations, <code class="docutils literal notranslate"><span class="pre">numpy</span></code> has an implemented function <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.real_if_close.html">numpy.real_if_close</a>. It converts complex-but-almost-real numbers to real.</p>
+</div>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">w0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time, s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_42_0.png" src="../../_images/Ricker_wavelet_42_0.png" />
+</div>
+</div>
+<p>In fact, this operation circularly shifted (or rolled) the wavelet by <code class="docutils literal notranslate"><span class="pre">NSamples//2</span></code> samples. This signal appears to be ugly at first glance, but!</p>
+<p>Recalling the periodicity implied in Discrete Fourier Transform, the new wavelet <em>actually</em> looks like this:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_44_0.png" src="../../_images/Ricker_wavelet_44_0.png" />
+</div>
+</div>
+<p>And despite its strange appearance, it is exactly what we need! It is a wavelet with a maximum at 0 sample, symmetric with respect to y-axis. And it is the periodicity of Fourier transforms that allows us to construct the zero-phase wavelet.</p>
+<p>This effect resembles the periodicity of discrete Fourier spectrum. As with spectra, the ‘mirrored’ right part of the wavelet can be virtually shifted to the negative part of time axis.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_46_0.png" src="../../_images/Ricker_wavelet_46_0.png" />
+</div>
+</div>
+<p>In fact, this is only a matter of visualization. Of course, for most purposes (convolution, for instance) it is preferable to use a normal-looking signal. By the way, the ‘True zero-phase’ and ‘Centered maximum’ wavelets can be related using the <em>shift theorem</em>, a property of Fourier transform.</p>
+<p>However, in terms of discrete Fourier transform, always remember how the zero-phase wavelet looks like:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_48_0.png" src="../../_images/Ricker_wavelet_48_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="constant-phase-ricker-wavelet">
+<h2>Constant-phase Ricker wavelet<a class="headerlink" href="#constant-phase-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
+<p>As an experiment, why not introduce a constant phase shift to the wavelet? Let’s say, 60 degrees (which is <span class="math notranslate nohighlight">\(\pi/3\)</span>).</p>
+<p>Here, we should not forget about the symmetry of the phase spectrum which must be an odd function for real signals. Hence we have to add 60° to ‘positive’ frequencies and subtract 60° from so-called ‘negative’ frequencies. We start with a ‘normal’ good-looking wavelet (with maximum in the middle).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AS60</span> <span class="o">=</span> <span class="n">AS</span>
+<span class="n">PS60</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">PS</span><span class="p">)</span>
+<span class="n">PS60</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">NSamples</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">PS</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">NSamples</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">pi</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">PS60</span><span class="p">[</span><span class="n">NSamples</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">PS</span><span class="p">[</span><span class="n">NSamples</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">pi</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">w60</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real_if_close</span><span class="p">(</span><span class="n">ifft</span><span class="p">(</span><span class="n">AS0</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">PS60</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_52_0.png" src="../../_images/Ricker_wavelet_52_0.png" />
+</div>
+</div>
+<p>A little bit of playing with phase yields the following picture:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PS_sh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">PS</span><span class="p">)</span>
+<span class="n">AS_sh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">AS</span><span class="p">)</span>
+<span class="n">phase_step</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">360</span><span class="o">//</span><span class="n">phase_step</span><span class="p">))</span>
+
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">phshift</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="n">phase_step</span><span class="p">)):</span>
+    <span class="n">AS_sh</span> <span class="o">=</span> <span class="n">AS0</span>
+    <span class="n">PS_sh</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">NSamples</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">PS</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">NSamples</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">pi</span><span class="o">*</span><span class="n">phshift</span><span class="o">/</span><span class="mi">180</span>
+    <span class="n">PS_sh</span><span class="p">[</span><span class="n">NSamples</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">PS</span><span class="p">[</span><span class="n">NSamples</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">pi</span><span class="o">*</span><span class="n">phshift</span><span class="o">/</span><span class="mi">180</span>
+    <span class="n">w_sh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real_if_close</span><span class="p">(</span><span class="n">ifft</span><span class="p">(</span><span class="n">AS_sh</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">PS_sh</span><span class="p">)))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">w_sh</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0:.0f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">phshift</span><span class="p">))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;#333333&#39;</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;#333333&#39;</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time, s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Ricker_wavelet_54_0.png" src="../../_images/Ricker_wavelet_54_0.png" />
+</div>
+</div>
+<p>The imaginary enveloping line that is tangent to each wavelet of this set is called <em>Instantaneous Amplitude</em> or <em>Amplitude Envelope</em>.</p>
+</div>
+<div class="section" id="related-topics">
+<h2>Related topics<a class="headerlink" href="#related-topics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Discrete Fourier Transform</p></li>
+<li><p>Synthetic trace</p></li>
+<li><p>Seismic attributes: complex trace</p></li>
+</ul>
+<hr class="docutils" />
+<p><sub>Created on Dec 6, 2021</sub></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Chapters\SignalProcessing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Seismika</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Complex_trace_attr.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Complex trace attributes</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Anton Grinevskiy<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

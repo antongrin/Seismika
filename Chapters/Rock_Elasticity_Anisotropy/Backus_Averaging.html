@@ -1,0 +1,1078 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backus Averaging &#8212; Seismika</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Complex trace attributes" href="../SignalProcessing/Complex_trace_attr.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/SEISMIKA_Logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Seismika</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Seismika
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Signal processing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SignalProcessing/Ricker_wavelet.html">
+   Ricker wavelet and its spectrum
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../SignalProcessing/Complex_trace_attr.html">
+   Complex trace attributes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Rock Physics and anisotropy
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Backus Averaging
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/Chapters/Rock_Elasticity_Anisotropy/Backus_Averaging.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FChapters/Rock_Elasticity_Anisotropy/Backus_Averaging.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Chapters/Rock_Elasticity_Anisotropy/Backus_Averaging.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction 🎍
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectives">
+   Objectives 🎯
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maths">
+   Maths 📓
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relations-between-stiffness-velocities-and-anisotropy">
+     Relations between stiffness, velocities and anisotropy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Backus averaging
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-averaging-on-a-piece-of-synthetic-rock">
+   Test averaging on a piece of synthetic rock 🪨
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#monte-carlo-simulations">
+   Monte-Carlo Simulations 🎲
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#isotropic-layers">
+     Isotropic layers 🟦
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anisotropic-layers">
+     Anisotropic layers ↗️
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#log-data-and-rolling-window-averaging">
+   Log data and rolling window averaging 🪵
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-import">
+     Data import
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#averaging-window">
+     Averaging window
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#results">
+     Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion 🏁
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#related-topics">
+   Related topics 🔗
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="backus-averaging">
+<h1>Backus Averaging<a class="headerlink" href="#backus-averaging" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sqrt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction 🎍<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This page is devoted to a special technique of elastic rock properties averaging. It is named after G.E. Backus who first introduced it in 1962.</p>
+<p>This method implies a model of a finely layered rock formation. Due to seismic resolution limitations, we normally cannot ‘see’ individual thin layers. Instead, we tend to think of this formation as of a homogeneous rock with certain average properties. Backus averaging allows us to compute these average parameters given the properties of individial thin layers.</p>
+<p>This task is often referred to as <strong>‘upscaling’</strong>. A layered model can be up-scaled to a transverse isotropic ‘averaged’ medium (we normally call it ‘<strong>effective medium</strong>’).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.1029/JZ067i011p04427">G.E.Backus, “Long-wave elastic anisotropy produced by horizontal layering”, J.Geoph.Res., 1962</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1088/1742-2132/10/5/055001">D.Kumar, “Applying Backus averaging for deriving seismic anisotropy…”, J.Geoph.Eng, 2013</a></p></li>
+<li><p><a class="reference external" href="https://wiki.seg.org/wiki/Dictionary:Transverse_isotropy#Backus_upscaling_.28Long_wavelength_approximation.29">SEGWiki: Transverse isotropy / Backus upscaling</a></p></li>
+<li><p><a class="reference external" href="https://library.seg.org/doi/pdf/10.1190/1.9781560801986">L. Thomsen, “Understanding seismic anisotropy in exploration and exploitation”, SEG DISC 2014</a> / see Appendix IIC (page S-14),</p></li>
+<li><p><a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.6.6858&amp;rep=rep1&amp;type=pdf">J. Berryman, V. Grechka, P. Berge, “Analysis of Thomsen parameters for finely layered VTI media”, SEP, 1997</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="objectives">
+<h2>Objectives 🎯<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Maths</p></li>
+<li><p>Test averaging on a portion of rock</p></li>
+<li><p>Stochastically simulate a set of layered rocks</p></li>
+<li><p>Apply averaging to well logs using rolling window</p></li>
+</ol>
+</div>
+<div class="section" id="maths">
+<h2>Maths 📓<a class="headerlink" href="#maths" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="relations-between-stiffness-velocities-and-anisotropy">
+<h3>Relations between stiffness, velocities and anisotropy<a class="headerlink" href="#relations-between-stiffness-velocities-and-anisotropy" title="Permalink to this headline">¶</a></h3>
+<p>Recall the VTI stiffness matrix in Voigt notation:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}C^{VTI} = \begin{bmatrix} 
+C_{11}         &amp; C_{11}-2C_{66} &amp; C_{13} &amp; 0 &amp; 0 &amp; 0 \\ 
+C_{11}-2C_{66} &amp; C_{11}         &amp; C_{13} &amp; 0 &amp; 0 &amp; 0 \\ 
+C_{13}         &amp; C_{13}         &amp; C_{33} &amp; 0 &amp; 0 &amp; 0 \\ 
+0 &amp; 0 &amp; 0 &amp; C_{44} &amp; 0 &amp; 0 \\ 
+0 &amp; 0 &amp; 0 &amp; 0 &amp; C_{44} &amp; 0 \\ 
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; C_{66} \\
+\end{bmatrix} \end{split}\]</div>
+</div></blockquote>
+<p>And the Thomsen parameters which explicitly show the value of anisotropy:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\varepsilon = \frac{C_{11}-C_{33}}{2C_{33}},\ \ 
+\delta = \frac{(C_{13}+C_{44})^2 - (C_{33}-C_{44})^2}{2C_{33}(C_{33}-C_{44})},\ \ 
+\gamma = \frac{C_{66}-C_{44}}{2C_{44}}\]</div>
+</div></blockquote>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[V_{P0}=\sqrt{\frac{C_{33}}{\rho}} , V_{S0}=\sqrt{\frac{C_{44}}{\rho}}\]</div>
+</div></blockquote>
+<p>These equations can be transformed in a ‘reverse’ order to evaluate <span class="math notranslate nohighlight">\(C_{ij}\)</span> based on velocity and anisotropy. Below is a set of equations in an ‘algorithmic’ order, helping to compute all the parameters step-by-step:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\( C_{33} = \rho V_{P0}^2 \)</span></p>
+<p><span class="math notranslate nohighlight">\( C_{44} = \rho V_{S0}^2 \)</span></p>
+<p><span class="math notranslate nohighlight">\( C_{11} = C_{33}(1+2 \varepsilon) \)</span></p>
+<p><span class="math notranslate nohighlight">\( C_{13} = \sqrt{ (C_{33} - C_{44}) (C_{33}(1+2\delta)-C_{44})} -C_{44}  \)</span></p>
+<p><span class="math notranslate nohighlight">\( C_{66} = C_{44} (1+2\gamma) \)</span></p>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h3>Backus averaging<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>These <span class="math notranslate nohighlight">\(C_{ij}\)</span> values have to be averaged in a tricky way to get <span class="math notranslate nohighlight">\(C_{ij}^*\)</span> which are the stiffness values of the effective medium. Angle brackets mean ‘arithmetic mean value’ here.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\( C^*_{11} = \Big \langle C_{11} - C_{13}^2 C_{33}^{-1} \Big \rangle + \Big \langle C_{13} C_{33}^{-1} \Big \rangle ^2 \Big \langle C_{33}^{-1} \Big \rangle ^{-1} \)</span></p>
+<p><span class="math notranslate nohighlight">\( C^*_{33} = \Big \langle C_{33}^{-1} \Big \rangle ^{-1} \)</span></p>
+<p><span class="math notranslate nohighlight">\( C^*_{13} = \Big \langle C_{13} C_{33}^{-1} \Big \rangle \Big \langle C_{33}^{-1} \Big \rangle ^{-1}  \)</span></p>
+<p><span class="math notranslate nohighlight">\( C^*_{44} = \Big \langle C_{44}^{-1} \Big \rangle ^{-1} \)</span></p>
+<p><span class="math notranslate nohighlight">\( C^*_{66} = \Big \langle C_{66} \Big \rangle \)</span></p>
+</div></blockquote>
+<p>This is what we are going to do:</p>
+<ol class="simple">
+<li><p>We know individual layers’ parameters: Vp, Vs, density, and possibly anisotropy</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(C_{ij}\)</span> for each layer</p></li>
+<li><p>Apply averaging equations to these <span class="math notranslate nohighlight">\(C_{ij}\)</span> and get <span class="math notranslate nohighlight">\(C_{ij}^*\)</span></p></li>
+<li><p>Transform averaged <span class="math notranslate nohighlight">\(C_{ij}^*\)</span> to average Vp, Vs, density, anisotropy</p></li>
+</ol>
+<p>This can be implemented as a function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Backus_avrg</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="n">vs</span><span class="p">,</span> <span class="n">den</span><span class="p">,</span> <span class="n">ep</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">de</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ga</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    
+    <span class="c1"># translate from vp/vs/den to Cij</span>
+    
+    <span class="n">c33</span> <span class="o">=</span> <span class="n">den</span><span class="o">*</span><span class="n">vp</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">c44</span> <span class="o">=</span> <span class="n">den</span><span class="o">*</span><span class="n">vs</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">c11</span> <span class="o">=</span> <span class="n">c33</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">ep</span><span class="p">)</span>
+    <span class="n">c13</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">c33</span> <span class="o">-</span> <span class="n">c44</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">c33</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">de</span><span class="p">)</span> <span class="o">-</span> <span class="n">c44</span><span class="p">))</span> <span class="o">-</span> <span class="n">c44</span>
+    <span class="n">c66</span> <span class="o">=</span> <span class="n">c44</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">ga</span><span class="p">)</span>
+
+    <span class="c1"># effective medium (averaged) parameters</span>
+
+    <span class="n">c11e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">c11</span> <span class="o">-</span> <span class="n">c13</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">c33</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">c13</span><span class="o">/</span><span class="n">c33</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">c33</span><span class="p">)</span>
+    <span class="n">c33e</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">c33</span><span class="p">)</span>
+    <span class="n">c13e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">c13</span><span class="o">/</span><span class="n">c33</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">c33</span><span class="p">)</span>
+    <span class="n">c44e</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">c44</span><span class="p">)</span>
+    <span class="n">c66e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">c66</span><span class="p">)</span>
+    <span class="n">dene</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">den</span><span class="p">)</span>
+
+    <span class="c1"># output parameters: velocity and anisotropy</span>
+
+    <span class="n">out_Vp</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">c33e</span><span class="o">/</span><span class="n">dene</span><span class="p">)</span>
+    <span class="n">out_Vs</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">c44e</span><span class="o">/</span><span class="n">dene</span><span class="p">)</span>
+    <span class="n">out_ep</span> <span class="o">=</span> <span class="p">(</span><span class="n">c11e</span><span class="o">-</span><span class="n">c33e</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">c33e</span><span class="p">)</span>
+    <span class="n">out_de</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">c13e</span> <span class="o">+</span> <span class="n">c44e</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">c33e</span> <span class="o">-</span> <span class="n">c44e</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">c33e</span><span class="o">*</span><span class="p">(</span><span class="n">c33e</span> <span class="o">-</span> <span class="n">c44e</span><span class="p">))</span>
+    <span class="n">out_ga</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">c66e</span> <span class="o">-</span> <span class="n">c44e</span><span class="p">)</span><span class="o">/</span><span class="n">c44e</span>
+    <span class="n">out_den</span> <span class="o">=</span> <span class="n">dene</span>
+    
+    <span class="k">return</span> <span class="n">out_Vp</span><span class="p">,</span> <span class="n">out_Vs</span><span class="p">,</span> <span class="n">out_den</span><span class="p">,</span> <span class="n">out_ep</span><span class="p">,</span> <span class="n">out_de</span><span class="p">,</span> <span class="n">out_ga</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="test-averaging-on-a-piece-of-synthetic-rock">
+<h2>Test averaging on a piece of synthetic rock 🪨<a class="headerlink" href="#test-averaging-on-a-piece-of-synthetic-rock" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have a mass of thin-layered rock which is composed of two interchanging rock types.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p></p></th>
+<th class="text-align:center head"><p>Type I</p></th>
+<th class="text-align:center head"><p>Type II</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:right"><p><strong>Vp</strong> [m/s]</p></td>
+<td class="text-align:center"><p>2000</p></td>
+<td class="text-align:center"><p>3000</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p><strong>Vs</strong> [m/s]</p></td>
+<td class="text-align:center"><p>1000</p></td>
+<td class="text-align:center"><p>1300</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p><strong>Density</strong> [kg/m<sup>3</sup>]</p></td>
+<td class="text-align:center"><p>2100</p></td>
+<td class="text-align:center"><p>2300</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vp1</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">vp2</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">vs1</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">vs2</span> <span class="o">=</span> <span class="mi">1300</span>
+<span class="n">den1</span> <span class="o">=</span> <span class="mi">2100</span>
+<span class="n">den2</span> <span class="o">=</span> <span class="mi">2300</span>
+
+<span class="n">vpvs1</span> <span class="o">=</span> <span class="n">vp1</span><span class="o">/</span><span class="n">vs1</span>
+<span class="n">vpvs2</span> <span class="o">=</span> <span class="n">vp2</span><span class="o">/</span><span class="n">vs2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let the total amount of layers be 50. Each layer is 1 m thick. Let the quantization step be 0.1 m.</p>
+<p>In fact, it doesn’t really matter as long as the total thicknesses of rock I and rock II are the same. This is mainly for visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Nlayers</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">Thk_layer</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># individual layer thickness</span>
+<span class="n">dz</span> <span class="o">=</span> <span class="mf">0.1</span>       <span class="c1"># depth step</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vp_lyr_1_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Thk_layer</span><span class="o">/</span><span class="n">dz</span><span class="p">))</span><span class="o">*</span><span class="n">vp1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Thk_layer</span><span class="o">/</span><span class="n">dz</span><span class="p">))</span><span class="o">*</span><span class="n">vp2</span><span class="p">))</span>
+<span class="n">vp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">vp_lyr_1_2</span><span class="p">,</span> <span class="n">Nlayers</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">vs_lyr_1_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Thk_layer</span><span class="o">/</span><span class="n">dz</span><span class="p">))</span><span class="o">*</span><span class="n">vs1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Thk_layer</span><span class="o">/</span><span class="n">dz</span><span class="p">))</span><span class="o">*</span><span class="n">vs2</span><span class="p">))</span>
+<span class="n">vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">vs_lyr_1_2</span><span class="p">,</span> <span class="n">Nlayers</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">den_lyr_1_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Thk_layer</span><span class="o">/</span><span class="n">dz</span><span class="p">))</span><span class="o">*</span><span class="n">den1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Thk_layer</span><span class="o">/</span><span class="n">dz</span><span class="p">))</span><span class="o">*</span><span class="n">den2</span><span class="p">))</span>
+<span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">den_lyr_1_2</span><span class="p">,</span> <span class="n">Nlayers</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;V$_P$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;V$_S$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">den</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_23_0.png" src="../../_images/Backus_Averaging_23_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_Vp</span><span class="p">,</span> <span class="n">out_Vs</span><span class="p">,</span> <span class="n">out_den</span><span class="p">,</span> <span class="n">out_ep</span><span class="p">,</span> <span class="n">out_de</span><span class="p">,</span> <span class="n">out_ga</span> <span class="o">=</span> <span class="n">Backus_avrg</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="n">vs</span><span class="p">,</span> <span class="n">den</span><span class="p">)</span>
+<span class="n">out_vpvs</span> <span class="o">=</span> <span class="n">out_Vp</span><span class="o">/</span><span class="n">out_Vs</span>
+<span class="n">out_eta</span> <span class="o">=</span> <span class="p">(</span><span class="n">out_ep</span><span class="o">-</span><span class="n">out_de</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">out_de</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Vp0: </span><span class="se">\t</span><span class="s1"> </span><span class="si">{0:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_Vp</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Vs0: </span><span class="se">\t</span><span class="s1"> </span><span class="si">{0:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_Vs</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Density: </span><span class="si">{0:.0f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_den</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;VpVs:</span><span class="se">\t</span><span class="s1"> </span><span class="si">{0:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_vpvs</span><span class="p">))</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Epsilon: </span><span class="si">{0:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_ep</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Delta: </span><span class="se">\t</span><span class="s1"> </span><span class="si">{0:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_de</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Gamma:</span><span class="se">\t</span><span class="s1"> </span><span class="si">{0:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_ga</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Eta:</span><span class="se">\t</span><span class="s1"> </span><span class="si">{0:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">out_eta</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vp0: 	 2330.7
+Vs0: 	 1113.3
+Density: 2200
+VpVs:	 2.093
+Epsilon: 0.054
+Delta: 	 0.019
+Gamma:	 0.049
+Eta:	 0.034
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, this synthetic rock is anisotropic (<span class="math notranslate nohighlight">\(\varepsilon\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span> are near 5%, <span class="math notranslate nohighlight">\(\delta\)</span> is 2%). This effective anisotropy is caused by fine-layering. However, we remember that the layers themselves have no anisotropy at all.</p>
+<p>V<sub>P0</sub> and V<sub>S0</sub> are lower than the arithmetic mean.</p>
+<p>To analyze which elastic parameters control the anisotropy values (and how), we will proceed to stochastical modelling.</p>
+</div>
+<div class="section" id="monte-carlo-simulations">
+<h2>Monte-Carlo Simulations 🎲<a class="headerlink" href="#monte-carlo-simulations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="isotropic-layers">
+<h3>Isotropic layers 🟦<a class="headerlink" href="#isotropic-layers" title="Permalink to this headline">¶</a></h3>
+<p>In this section we are going to reproduce the results of [Berryman, Grechka, 1997]</p>
+<p>This simulation will, same as above, assume a model of two inter-layering rock types. Vp and Vs of each layer are random numbers uniformly distributed between specified boudaries. Density is constant (as it doesn’t influence the anisotropy). No intrinsic anisotropy is incorporated.</p>
+<p>We will use exactly the same model parameters as suggested in the mentioned paper. This will allow us to compare the results and expect them to be similar.</p>
+<ul class="simple">
+<li><p>Vp [m/s]: min = 2500, max = 5500</p></li>
+<li><p>Vs/Vp: min = 0.35, max = 0.65</p></li>
+<li><p>Density [kg/m<sup>3</sup>]: 2670</p></li>
+<li><p>Number of models: 500</p></li>
+</ul>
+<p>The results will not depend on the number of layers in the model (as long as total thicknesses of both rock types are the same). Thus we do not need to have many layers: two will suffice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vpmin</span> <span class="o">=</span> <span class="mi">2500</span>
+<span class="n">vpmax</span> <span class="o">=</span> <span class="mi">5500</span>
+<span class="n">rmin</span> <span class="o">=</span> <span class="mf">0.35</span> <span class="c1"># r is Vs/Vp</span>
+<span class="n">rmax</span> <span class="o">=</span> <span class="mf">0.65</span>
+<span class="n">density</span> <span class="o">=</span> <span class="mi">2670</span>
+
+<span class="n">Nmodels</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="n">vp1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">vpmax</span> <span class="o">-</span> <span class="n">vpmin</span><span class="p">)</span> <span class="o">+</span> <span class="n">vpmin</span>
+<span class="n">vp2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">vpmax</span> <span class="o">-</span> <span class="n">vpmin</span><span class="p">)</span> <span class="o">+</span> <span class="n">vpmin</span>
+
+<span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">rmax</span> <span class="o">-</span> <span class="n">rmin</span><span class="p">)</span> <span class="o">+</span> <span class="n">rmin</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">rmax</span> <span class="o">-</span> <span class="n">rmin</span><span class="p">)</span> <span class="o">+</span> <span class="n">rmin</span>
+
+<span class="n">vs1</span> <span class="o">=</span> <span class="n">vp1</span><span class="o">*</span><span class="n">r1</span>
+<span class="n">vs2</span> <span class="o">=</span> <span class="n">vp2</span><span class="o">*</span><span class="n">r2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_Vp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_Vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_ep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_de</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_ga</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_vpvs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">):</span>
+
+    <span class="n">vp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">vp1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">vp2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">vs1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">vs2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">density</span><span class="p">,</span> <span class="n">density</span><span class="p">))</span>
+
+    <span class="n">out_Vp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_Vs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_den</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_ep</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_de</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_ga</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Backus_avrg</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="n">vs</span><span class="p">,</span> <span class="n">den</span><span class="p">)</span>
+    
+<span class="n">out_eta</span> <span class="o">=</span> <span class="p">(</span><span class="n">out_ep</span><span class="o">-</span><span class="n">out_de</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">out_de</span><span class="p">)</span>
+<span class="n">out_vpvs</span> <span class="o">=</span> <span class="n">out_Vp</span><span class="o">/</span><span class="n">out_Vs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span><span class="mf">7.5</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">out_eta</span><span class="p">,</span> <span class="n">out_de</span><span class="p">,</span> <span class="n">mfc</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">mec</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ms</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">mew</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">out_ep</span><span class="p">,</span> <span class="n">out_de</span><span class="p">,</span> <span class="n">mfc</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">mec</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ms</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">mew</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Eta&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Delta&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Epsilon&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Del&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_32_0.png" src="../../_images/Backus_Averaging_32_0.png" />
+</div>
+</div>
+<p>These crossplots are really quite similar to the figures from the paper of Berryman and Grechka (shown below).</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Delta vs Eta</p></th>
+<th class="text-align:center head"><p>Delta vs Epsilon</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="../../_images/Backus_pap_de_vs_eta.png" /></p></td>
+<td class="text-align:center"><p><img alt="" src="../../_images/Backus_pap_de_vs_ep.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>How about the other anisotropic parameters and their relationships?</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">labels_aniso</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;Epsilon&#39;</span><span class="p">,</span> <span class="s1">&#39;Gamma&#39;</span><span class="p">,</span> <span class="s1">&#39;Eta&#39;</span><span class="p">]</span>
+
+<span class="n">df_model1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">out_de</span><span class="p">,</span> <span class="n">out_ep</span><span class="p">,</span> <span class="n">out_ga</span><span class="p">,</span> <span class="n">out_eta</span><span class="p">]),</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">labels_aniso</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">df_model1</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_upper</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens_d&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;.3&quot;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">corrfunc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kws</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    https://stackoverflow.com/a/30942817/5819875</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;r = </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+                <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.85</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;small&#39;</span><span class="p">)</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">corrfunc</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_36_0.png" src="../../_images/Backus_Averaging_36_0.png" />
+</div>
+</div>
+<p>Note a certain, almost linear, relationship between Eta and Gamma.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span>  <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">sharex</span> <span class="o">=</span> <span class="s1">&#39;col&#39;</span><span class="p">,</span> <span class="n">sharey</span> <span class="o">=</span> <span class="s1">&#39;row&#39;</span><span class="p">)</span>
+
+<span class="n">labels_contrast</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$|\Delta V_P|$&#39;</span><span class="p">,</span> <span class="s1">&#39;$|\Delta V_S|$&#39;</span><span class="p">,</span> <span class="s1">&#39;$|\Delta V_P/V_S|$&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">aniso_param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">out_de</span><span class="p">,</span> <span class="n">out_ep</span><span class="p">,</span> <span class="n">out_ga</span><span class="p">,</span> <span class="n">out_eta</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">model_contrast</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">vp1</span> <span class="o">-</span> <span class="n">vp2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">vs1</span> <span class="o">-</span> <span class="n">vs2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r1</span> <span class="o">-</span> <span class="n">r2</span><span class="p">)]):</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">model_contrast</span><span class="p">,</span> <span class="n">aniso_param</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">model_contrast</span><span class="p">,</span> <span class="n">aniso_param</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;r = </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+                           <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.05</span><span class="p">,</span> <span class="mf">.9</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;small&#39;</span><span class="p">)</span>
+        
+<span class="p">[</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">labels_aniso</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+<span class="p">[</span><span class="n">ax</span><span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">labels_contrast</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_38_0.png" src="../../_images/Backus_Averaging_38_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="anisotropic-layers">
+<h3>Anisotropic layers ↗️<a class="headerlink" href="#anisotropic-layers" title="Permalink to this headline">¶</a></h3>
+<p>If the thin layers are intrinsically anisotropic, it additionally amplifies the total anisotropy of the effective medium.</p>
+<p>Let us set random values of Thomsen parameters to the layers of the above model.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\varepsilon\)</span>: min = 0, max = 0.1</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span>: min = -0.1, max = 0.025</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span>: min = 0, max = 0.1</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ep_min</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ep_max</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">de_min</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span>
+<span class="n">de_max</span> <span class="o">=</span> <span class="mf">0.025</span>
+<span class="n">ga_min</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ga_max</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">ep1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ep_max</span> <span class="o">-</span> <span class="n">ep_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">ep_min</span>
+<span class="n">ep2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+
+<span class="n">de1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">de_max</span> <span class="o">-</span> <span class="n">de_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">de_min</span>
+<span class="n">de2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+
+<span class="n">ga1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">ga_max</span> <span class="o">-</span> <span class="n">ga_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">ga_min</span>
+<span class="n">ga2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+
+<span class="n">eta1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ep1</span><span class="o">-</span><span class="n">de1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">de1</span><span class="p">)</span>
+
+<span class="n">eta_min</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">eta_max</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="n">density</span> <span class="o">=</span> <span class="mi">2670</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_Vp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_Vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_ep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_de</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_ga</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+<span class="n">out_vpvs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nmodels</span><span class="p">):</span>
+
+    <span class="n">vp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">vp1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">vp2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">vs1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">vs2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">density</span><span class="p">,</span> <span class="n">density</span><span class="p">))</span>
+    <span class="n">ep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">ep1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ep2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">de</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">de1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">de2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">ga</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">ga1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ga2</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="n">out_Vp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_Vs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_den</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_ep</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_de</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_ga</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Backus_avrg</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="n">vs</span><span class="p">,</span> <span class="n">den</span><span class="p">,</span> <span class="n">ep</span><span class="p">,</span> <span class="n">de</span><span class="p">,</span> <span class="n">ga</span><span class="p">)</span>
+    
+<span class="n">out_eta</span> <span class="o">=</span> <span class="p">(</span><span class="n">out_ep</span><span class="o">-</span><span class="n">out_de</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">out_de</span><span class="p">)</span>
+<span class="n">out_vpvs</span> <span class="o">=</span> <span class="n">out_Vp</span><span class="o">/</span><span class="n">out_Vs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span>  <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span> <span class="n">sharex</span> <span class="o">=</span> <span class="s1">&#39;col&#39;</span><span class="p">,</span> <span class="n">sharey</span> <span class="o">=</span> <span class="s1">&#39;row&#39;</span><span class="p">)</span>
+
+<span class="n">intrinsic_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">de1</span><span class="p">,</span> <span class="n">ep1</span><span class="p">,</span> <span class="n">ga1</span><span class="p">,</span> <span class="n">eta1</span><span class="p">]</span>
+<span class="n">min_c_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">de_min</span><span class="p">,</span> <span class="n">ep_min</span><span class="p">,</span> <span class="n">ga_min</span><span class="p">,</span> <span class="n">eta_min</span><span class="p">]</span>
+<span class="n">max_c_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">de_max</span><span class="p">,</span> <span class="n">ep_max</span><span class="p">,</span> <span class="n">ga_max</span><span class="p">,</span> <span class="n">eta_max</span><span class="p">]</span>
+<span class="n">labels_aniso</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;Epsilon&#39;</span><span class="p">,</span> <span class="s1">&#39;Gamma&#39;</span><span class="p">,</span> <span class="s1">&#39;Eta&#39;</span><span class="p">]</span>
+<span class="n">labels_contrast</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$|\Delta V_P|$&#39;</span><span class="p">,</span> <span class="s1">&#39;$|\Delta V_S|$&#39;</span><span class="p">,</span> <span class="s1">&#39;$|\Delta V_P/V_S|$&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">aniso_param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">out_de</span><span class="p">,</span> <span class="n">out_ep</span><span class="p">,</span> <span class="n">out_ga</span><span class="p">,</span> <span class="n">out_eta</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">model_contrast</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">vp1</span> <span class="o">-</span> <span class="n">vp2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">vs1</span> <span class="o">-</span> <span class="n">vs2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r1</span> <span class="o">-</span> <span class="n">r2</span><span class="p">)]):</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">model_contrast</span><span class="p">,</span> <span class="n">aniso_param</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">intrinsic_params</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">vmin</span> <span class="o">=</span> <span class="n">min_c_vals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">max_c_vals</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+        
+<span class="p">[</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">labels_aniso</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+<span class="p">[</span><span class="n">ax</span><span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">labels_contrast</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_43_1.png" src="../../_images/Backus_Averaging_43_1.png" />
+</div>
+</div>
+<p>These points are colored by their corresponding intrinsic anisotropy parameters;</p>
+<p>We observe a strong positive correlation between effective <span class="math notranslate nohighlight">\(\gamma\)</span>  and ΔV<sub>S</sub>, effective <span class="math notranslate nohighlight">\( \varepsilon \)</span> and ΔV<sub>P</sub></p>
+<p>Generally, the more ‘anisotropic’ layers are, the more anisotropic is the effective medium. Numerically this is expressed with an equation which can be found, for example, in [Thomsen, 2002]. We see that the yellow points (which correspond to higher intrinsic anisotropy) are situated in regions of higher effective anisotropy.</p>
+</div>
+</div>
+<div class="section" id="log-data-and-rolling-window-averaging">
+<h2>Log data and rolling window averaging 🪵<a class="headerlink" href="#log-data-and-rolling-window-averaging" title="Permalink to this headline">¶</a></h2>
+<p>Backus averaging can be applied within a rolling window to a well log (a set of logs).</p>
+<p>Vp, Vs, Density and anisotropy (if available) log curves are used as an input.</p>
+<p>Upscaled logs are output.</p>
+<p>For this example, we will use well logs from <a class="reference external" href="https://terranubis.com/datainfo/Penobscot">Penobscot dataset</a>. Unfortunately these data lack V<sub>S</sub> measurements, so we will have to estimate it from P-wave velocity using a linear Castagna equation.</p>
+<div class="section" id="data-import">
+<h3>Data import<a class="headerlink" href="#data-import" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;./Data/w4_las_1500_2500m.txt&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dpt_w4</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">vp_w4</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">den_w4</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">Nsamples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs_w4</span> <span class="o">=</span> <span class="p">(</span><span class="n">vp_w4</span> <span class="o">-</span> <span class="mi">1360</span><span class="p">)</span><span class="o">/</span><span class="mf">1.16</span> <span class="c1">#castagna equation https://doi.org/10.1190%2F1.1441933</span>
+<span class="n">vpvs_w4</span> <span class="o">=</span> <span class="n">vp_w4</span><span class="o">/</span><span class="n">vs_w4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">vp_w4</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;P-wave [m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">vs_w4</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;S-wave [m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">den_w4</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Density [kg/m$^3$]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Depth, m&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_51_0.png" src="../../_images/Backus_Averaging_51_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="averaging-window">
+<h3>Averaging window<a class="headerlink" href="#averaging-window" title="Permalink to this headline">¶</a></h3>
+<p>Selection of averaging window length is not straightforward; however, Liner and Fei have shown that optimal window length should be chosen regarding signal frequency and S-wave velocity. They proposed a parameter <span class="math notranslate nohighlight">\(B\)</span> which is dependent on frequency <span class="math notranslate nohighlight">\(f\)</span>, averaging length <span class="math notranslate nohighlight">\(L'\)</span> and S-wave velocity <span class="math notranslate nohighlight">\(V_{S0}\)</span> (after averaging):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+B \equiv \frac{fL'} {\min(V_{S0})} \leq 
+\begin{cases}
+       1/3 &amp; \text{scattering limit}\\
+       2 &amp;\text{transmission limit}
+  \end{cases}   
+\end{split}\]</div>
+<p>(so-called ‘Backus number’).</p>
+<p>Suppose the seismic record has a dominant frequency of 30 Hz. For the most of the log, V<sub>S</sub> is 1500 m/s or higher.
+Then if we choose a 40 m window, Backus number <span class="math notranslate nohighlight">\(B\)</span> is less than 1 which keeps us below the ‘transmission limit’.</p>
+<p>That means that the averaged anisotropy and velocity are accurate enough for traveltime computations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define averaging window</span>
+<span class="n">rolling_window_len_m</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="c1"># How many samples fit into the averaging window </span>
+<span class="n">rolling_window_len_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rolling_window_len_m</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">))))</span> <span class="c1">#step is 0.5 ft (0.15 or 0.16 m)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_Vp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">)</span>
+<span class="n">out_Vs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">)</span>
+<span class="n">out_den</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">)</span>
+<span class="n">out_ep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">)</span>
+<span class="n">out_de</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">)</span>
+<span class="n">out_ga</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">)):</span>
+    <span class="n">window_start</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="n">rolling_window_len_samples</span><span class="o">//</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">window_end</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">),</span> <span class="n">i</span><span class="o">+</span><span class="n">rolling_window_len_samples</span><span class="o">//</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">vp</span> <span class="o">=</span> <span class="n">vp_w4</span><span class="p">[</span><span class="n">window_start</span><span class="p">:</span><span class="n">window_end</span><span class="p">]</span>
+    <span class="n">vs</span> <span class="o">=</span> <span class="n">vs_w4</span><span class="p">[</span><span class="n">window_start</span><span class="p">:</span><span class="n">window_end</span><span class="p">]</span>
+    <span class="n">den</span> <span class="o">=</span> <span class="n">den_w4</span><span class="p">[</span><span class="n">window_start</span><span class="p">:</span><span class="n">window_end</span><span class="p">]</span>
+
+    <span class="n">out_Vp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_Vs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_den</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_ep</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_de</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">out_ga</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Backus_avrg</span><span class="p">(</span><span class="n">vp</span><span class="p">,</span> <span class="n">vs</span><span class="p">,</span> <span class="n">den</span><span class="p">)</span>
+    
+<span class="n">out_eta</span> <span class="o">=</span> <span class="p">(</span><span class="n">out_ep</span><span class="o">-</span><span class="n">out_de</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">out_de</span><span class="p">)</span>
+<span class="n">out_vpvs</span> <span class="o">=</span> <span class="n">out_Vp</span><span class="o">/</span><span class="n">out_Vs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">vp_w4</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;P-wave [m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">out_Vp</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;P-wave_B [m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">vs_w4</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;S-wave [m/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">out_Vs</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;S-wave_B [m/s]&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Depth, m&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_59_0.png" src="../../_images/Backus_Averaging_59_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">out_ep</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Epsilon&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">out_de</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Delta&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">out_ga</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Gamma&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dpt_w4</span><span class="p">,</span> <span class="n">out_eta</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Eta&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Depth, m&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_60_0.png" src="../../_images/Backus_Averaging_60_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_w4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">out_de</span><span class="p">,</span> <span class="n">out_ep</span><span class="p">,</span> <span class="n">out_ga</span><span class="p">,</span> <span class="n">out_eta</span><span class="p">]),</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">labels_aniso</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">df_w4</span><span class="o">.</span><span class="n">iloc</span><span class="p">[::</span><span class="mi">10</span><span class="p">])</span> <span class="c1"># only include every 10th point in cross-plotting</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_upper</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens_d&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;.3&quot;</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">corrfunc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kws</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    https://stackoverflow.com/a/30942817/5819875</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;r = </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">),</span>
+                <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.85</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;small&#39;</span><span class="p">)</span>
+
+<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">corrfunc</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_61_0.png" src="../../_images/Backus_Averaging_61_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion 🏁<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Backus averaging allows to estimate the anisotropy of a layered rock</p></li>
+<li><p>The Thomsen parameters of a layered rock are not independent</p></li>
+<li><p>Applying averaging in a rolling window allows to upscale the well logs (for example, to match the seismic resolution)</p></li>
+</ul>
+</div>
+<div class="section" id="related-topics">
+<h2>Related topics 🔗<a class="headerlink" href="#related-topics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>??? 1</p></li>
+<li><p>??? 2</p></li>
+</ul>
+<hr class="docutils" />
+<p><sub>Created on May 13, 2022</sub></p>
+<p><sub>Modified on May 25, 2022</sub></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Chapters\Rock_Elasticity_Anisotropy"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../SignalProcessing/Complex_trace_attr.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Complex trace attributes</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Anton Grinevskiy<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
