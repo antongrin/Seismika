@@ -334,15 +334,16 @@
 </div>
 <div class="section" id="introduction">
 <h2>Introduction 🎍<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>This page is devoted to a special technique of elastic rock properties averaging. It is named after G.E. Backus who first introduced it in 1962.</p>
+<p>This page is devoted to a special technique of elastic rock properties averaging. It is named after G.E. Backus who first introduced it in <a class="reference external" href="https://doi.org/10.1029/JZ067i011p04427">1962</a>.</p>
 <p>This method implies a model of a finely layered rock formation. Due to seismic resolution limitations, we normally cannot ‘see’ individual thin layers. Instead, we tend to think of this formation as of a homogeneous rock with certain average properties. Backus averaging allows us to compute these average parameters given the properties of individial thin layers.</p>
 <p>This task is often referred to as <strong>‘upscaling’</strong>. A layered model can be up-scaled to a transverse isotropic ‘averaged’ medium (we normally call it ‘<strong>effective medium</strong>’).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://doi.org/10.1029/JZ067i011p04427">G.E.Backus, “Long-wave elastic anisotropy produced by horizontal layering”, J.Geoph.Res., 1962</a></p></li>
-<li><p><a class="reference external" href="https://doi.org/10.1088/1742-2132/10/5/055001">D.Kumar, “Applying Backus averaging for deriving seismic anisotropy…”, J.Geoph.Eng, 2013</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1029/JZ067i011p04427">G.E. Backus, “Long-wave elastic anisotropy produced by horizontal layering”, J.Geoph.Res., 1962</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1088/1742-2132/10/5/055001">D. Kumar, “Applying Backus averaging for deriving seismic anisotropy…”, J.Geoph.Eng, 2013</a></p></li>
 <li><p><a class="reference external" href="https://wiki.seg.org/wiki/Dictionary:Transverse_isotropy#Backus_upscaling_.28Long_wavelength_approximation.29">SEGWiki: Transverse isotropy / Backus upscaling</a></p></li>
+<li><p><a class="reference external" href="https://library.seg.org/doi/abs/10.1190/1.2723204">C. Liner, T. Fei, “The Backus number”, The Leading Edge, 2007</a></p></li>
 <li><p><a class="reference external" href="https://library.seg.org/doi/pdf/10.1190/1.9781560801986">L. Thomsen, “Understanding seismic anisotropy in exploration and exploitation”, SEG DISC 2014</a> / see Appendix IIC (page S-14),</p></li>
 <li><p><a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.6.6858&amp;rep=rep1&amp;type=pdf">J. Berryman, V. Grechka, P. Berge, “Analysis of Thomsen parameters for finely layered VTI media”, SEP, 1997</a></p></li>
 </ul>
@@ -571,7 +572,7 @@ Eta:	 0.034
 <h2>Monte-Carlo Simulations 🎲<a class="headerlink" href="#monte-carlo-simulations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="isotropic-layers">
 <h3>Isotropic layers 🟦<a class="headerlink" href="#isotropic-layers" title="Permalink to this headline">¶</a></h3>
-<p>In this section we are going to reproduce the results of [Berryman, Grechka, 1997]</p>
+<p>In this section we are going to reproduce the results of <a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.6.6858&amp;rep=rep1&amp;type=pdf">[Berryman, Grechka, 1997]</a> <em>(or <a class="reference external" href="https://doi.org/10.1046/j.1365-2478.1999.00163.x">[Berryman, Grechka, 1999]</a>, I don’t know which source is better to cite)</em></p>
 <p>This simulation will, same as above, assume a model of two inter-layering rock types. Vp and Vs of each layer are random numbers uniformly distributed between specified boudaries. Density is constant (as it doesn’t influence the anisotropy). No intrinsic anisotropy is incorporated.</p>
 <p>We will use exactly the same model parameters as suggested in the mentioned paper. This will allow us to compare the results and expect them to be similar.</p>
 <ul class="simple">
@@ -627,6 +628,8 @@ Eta:	 0.034
 </div>
 </div>
 </div>
+<p>Now that we have computed the synthetic models and averaged them, it’s time to plot and analyze the results.</p>
+<p>To me, it’s always fun to obtain the results that are similar to those of famous scientists. Here we have a wonderful opportunity to recreate cross-plots between Thomsen parameters from <a class="reference external" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.6.6858&amp;rep=rep1&amp;type=pdf">Berryman, Grechka, 1997</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span><span class="mf">7.5</span><span class="p">])</span>
@@ -652,7 +655,7 @@ Eta:	 0.034
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Backus_Averaging_32_0.png" src="../../_images/Backus_Averaging_32_0.png" />
+<img alt="../../_images/Backus_Averaging_34_0.png" src="../../_images/Backus_Averaging_34_0.png" />
 </div>
 </div>
 <p>These crossplots are really quite similar to the figures from the paper of Berryman and Grechka (shown below).</p>
@@ -668,7 +671,7 @@ Eta:	 0.034
 </tr>
 </tbody>
 </table>
-<p>How about the other anisotropic parameters and their relationships?</p>
+<p>How about the other anisotropic parameters and their relationships? Let’s use the power of <a class="reference external" href="https://seaborn.pydata.org/"><code class="docutils literal notranslate"><span class="pre">seaborn</span></code></a> library and make pair-wise crossplots.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -701,10 +704,12 @@ Eta:	 0.034
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Backus_Averaging_36_0.png" src="../../_images/Backus_Averaging_36_0.png" />
+<img alt="../../_images/Backus_Averaging_38_0.png" src="../../_images/Backus_Averaging_38_0.png" />
 </div>
 </div>
 <p>Note a certain, almost linear, relationship between Eta and Gamma.</p>
+<p>What causes this anisotropy and influences its degree? It seems rather obvious that the stronger the contrast between layers, the higher the anisotropy. However, which elastic parameter is most important? Crossplots between anisotropy parameters and elatic contrasts may shed some light on it.</p>
+<p>Below is the grid of relationships between {𝜀, 𝛿, 𝛾, 𝜂} and absolute values of {ΔV<sub>P</sub>, ΔV<sub>S</sub>, Δ(V<sub>P</sub>/V<sub>S</sub>)}.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span>  <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">sharex</span> <span class="o">=</span> <span class="s1">&#39;col&#39;</span><span class="p">,</span> <span class="n">sharey</span> <span class="o">=</span> <span class="s1">&#39;row&#39;</span><span class="p">)</span>
@@ -726,14 +731,21 @@ Eta:	 0.034
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Backus_Averaging_38_0.png" src="../../_images/Backus_Averaging_38_0.png" />
+<img alt="../../_images/Backus_Averaging_40_0.png" src="../../_images/Backus_Averaging_40_0.png" />
 </div>
 </div>
+<p>The strongest correlation is between:</p>
+<ul class="simple">
+<li><p>𝜀 and ΔV<sub>P</sub>,</p></li>
+<li><p>𝛾 and ΔV<sub>S</sub>,</p></li>
+<li><p>𝜂 and ΔV<sub>S</sub>.</p></li>
+</ul>
+<p>Strangely, on ‘𝜀 - ΔV<sub>P</sub>/V<sub>S</sub>’ and ‘𝛿 - ΔV<sub>P</sub>’ crossplot there are darker lines of higher point density but there are lots of outliers as well.</p>
 </div>
 <div class="section" id="anisotropic-layers">
 <h3>Anisotropic layers ↗️<a class="headerlink" href="#anisotropic-layers" title="Permalink to this headline">¶</a></h3>
 <p>If the thin layers are intrinsically anisotropic, it additionally amplifies the total anisotropy of the effective medium.</p>
-<p>Let us set random values of Thomsen parameters to the layers of the above model.</p>
+<p>Let us add random values of Thomsen parameters to the layers of the above model.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\varepsilon\)</span>: min = 0, max = 0.1</p></li>
 <li><p><span class="math notranslate nohighlight">\(\delta\)</span>: min = -0.1, max = 0.025</p></li>
@@ -793,6 +805,7 @@ Eta:	 0.034
 </div>
 </div>
 </div>
+<p>Same as before, let’s plot anisotropy parameters against elastic contrasts, coding intrinsic anisotropy in color.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span>  <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">],</span> <span class="n">sharex</span> <span class="o">=</span> <span class="s1">&#39;col&#39;</span><span class="p">,</span> <span class="n">sharey</span> <span class="o">=</span> <span class="s1">&#39;row&#39;</span><span class="p">)</span>
@@ -816,18 +829,18 @@ Eta:	 0.034
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Backus_Averaging_43_1.png" src="../../_images/Backus_Averaging_43_1.png" />
+<img alt="../../_images/Backus_Averaging_48_1.png" src="../../_images/Backus_Averaging_48_1.png" />
 </div>
 </div>
 <p>These points are colored by their corresponding intrinsic anisotropy parameters;</p>
-<p>We observe a strong positive correlation between effective <span class="math notranslate nohighlight">\(\gamma\)</span>  and ΔV<sub>S</sub>, effective <span class="math notranslate nohighlight">\( \varepsilon \)</span> and ΔV<sub>P</sub></p>
-<p>Generally, the more ‘anisotropic’ layers are, the more anisotropic is the effective medium. Numerically this is expressed with an equation which can be found, for example, in [Thomsen, 2002]. We see that the yellow points (which correspond to higher intrinsic anisotropy) are situated in regions of higher effective anisotropy.</p>
+<p>Same as before, we observe a strong positive correlation between effective <span class="math notranslate nohighlight">\(\gamma\)</span>  and ΔV<sub>S</sub>, effective <span class="math notranslate nohighlight">\( \varepsilon \)</span> and ΔV<sub>P</sub>.</p>
+<p>Generally, the more ‘anisotropic’ layers are, the more anisotropic is the effective medium. Numerically this is expressed with an equation which can be found, for example, in <a class="reference external" href="https://library.seg.org/doi/pdf/10.1190/1.9781560801986">[Thomsen, 2002]</a>. We see that the yellow points (which correspond to higher intrinsic anisotropy) are situated in regions of higher effective anisotropy.</p>
 </div>
 </div>
 <div class="section" id="log-data-and-rolling-window-averaging">
 <h2>Log data and rolling window averaging 🪵<a class="headerlink" href="#log-data-and-rolling-window-averaging" title="Permalink to this headline">¶</a></h2>
 <p>Backus averaging can be applied within a rolling window to a well log (a set of logs).</p>
-<p>Vp, Vs, Density and anisotropy (if available) log curves are used as an input.</p>
+<p>Vp, Vs, density and anisotropy (if available) log curves are used as an input.</p>
 <p>Upscaled logs are output.</p>
 <p>For this example, we will use well logs from <a class="reference external" href="https://terranubis.com/datainfo/Penobscot">Penobscot dataset</a>. Unfortunately these data lack V<sub>S</sub> measurements, so we will have to estimate it from P-wave velocity using a linear Castagna equation.</p>
 <div class="section" id="data-import">
@@ -849,9 +862,15 @@ Eta:	 0.034
 </div>
 </div>
 </div>
+<p>Now we aregoing to synthesize a V<sub>S</sub> curve. However, we will modify the equation coefficients within two arbitrary depth intervals to obtain higher variability in Vp/Vs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs_w4</span> <span class="o">=</span> <span class="p">(</span><span class="n">vp_w4</span> <span class="o">-</span> <span class="mi">1360</span><span class="p">)</span><span class="o">/</span><span class="mf">1.16</span> <span class="c1">#castagna equation https://doi.org/10.1190%2F1.1441933</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs_w4</span> <span class="o">=</span> <span class="p">(</span><span class="n">vp_w4</span> <span class="o">-</span> <span class="mi">1360</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.16</span><span class="p">)</span> <span class="c1">#castagna equation https://doi.org/10.1190%2F1.1441933</span>
+
+<span class="c1"># modify equation constants for a specific interval</span>
+<span class="n">vs_w4</span><span class="p">[(</span><span class="n">dpt_w4</span><span class="o">&gt;</span><span class="mi">2030</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dpt_w4</span><span class="o">&lt;</span><span class="mi">2200</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="n">vp_w4</span><span class="p">[(</span><span class="n">dpt_w4</span><span class="o">&gt;</span><span class="mi">2030</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dpt_w4</span><span class="o">&lt;</span><span class="mi">2200</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1260</span><span class="p">)</span><span class="o">/</span><span class="mf">1.12</span>
+<span class="n">vs_w4</span><span class="p">[</span><span class="n">dpt_w4</span><span class="o">&gt;</span><span class="mi">2400</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">vp_w4</span><span class="p">[</span><span class="n">dpt_w4</span><span class="o">&gt;</span><span class="mi">2400</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1460</span><span class="p">)</span><span class="o">/</span><span class="mf">1.2</span>
+
 <span class="n">vpvs_w4</span> <span class="o">=</span> <span class="n">vp_w4</span><span class="o">/</span><span class="n">vs_w4</span>
 </pre></div>
 </div>
@@ -870,13 +889,28 @@ Eta:	 0.034
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Backus_Averaging_51_0.png" src="../../_images/Backus_Averaging_51_0.png" />
+<img alt="../../_images/Backus_Averaging_57_0.png" src="../../_images/Backus_Averaging_57_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">vp_w4</span><span class="p">,</span> <span class="n">vs_w4</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">dpt_w4</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Color = Depth&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Vp, m/s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Vs, m/s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">shrink</span><span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Backus_Averaging_58_1.png" src="../../_images/Backus_Averaging_58_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="averaging-window">
 <h3>Averaging window<a class="headerlink" href="#averaging-window" title="Permalink to this headline">¶</a></h3>
-<p>Selection of averaging window length is not straightforward; however, Liner and Fei have shown that optimal window length should be chosen regarding signal frequency and S-wave velocity. They proposed a parameter <span class="math notranslate nohighlight">\(B\)</span> which is dependent on frequency <span class="math notranslate nohighlight">\(f\)</span>, averaging length <span class="math notranslate nohighlight">\(L'\)</span> and S-wave velocity <span class="math notranslate nohighlight">\(V_{S0}\)</span> (after averaging):</p>
+<p>Selection of averaging window length is not straightforward; however, Liner and Fei <a class="reference external" href="https://library.seg.org/doi/abs/10.1190/1.2723204">have shown</a> that optimal window length should be chosen regarding signal frequency and S-wave velocity. They proposed a parameter <span class="math notranslate nohighlight">\(B\)</span> which is dependent on frequency <span class="math notranslate nohighlight">\(f\)</span>, averaging length <span class="math notranslate nohighlight">\(L'\)</span> and S-wave velocity <span class="math notranslate nohighlight">\(V_{S0}\)</span> (after averaging):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 B \equiv \frac{fL'} {\min(V_{S0})} \leq 
@@ -948,9 +982,10 @@ Then if we choose a 40 m window, Backus number <span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Backus_Averaging_59_0.png" src="../../_images/Backus_Averaging_59_0.png" />
+<img alt="../../_images/Backus_Averaging_66_0.png" src="../../_images/Backus_Averaging_66_0.png" />
 </div>
 </div>
+<p>We see that the averaged velocities are indeed a smooth version of input logs. How about anisotropy?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
@@ -966,10 +1001,11 @@ Then if we choose a 40 m window, Backus number <span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Backus_Averaging_60_0.png" src="../../_images/Backus_Averaging_60_0.png" />
+<img alt="../../_images/Backus_Averaging_68_0.png" src="../../_images/Backus_Averaging_68_0.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<p>These are the effective anisotropy logs (upscaled to roughly seismic bandwidth). Unfortunately, since Vp and Vs are perfectly correlated, the anisotropy parameters are strongly correlated, too.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_w4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">out_de</span><span class="p">,</span> <span class="n">out_ep</span><span class="p">,</span> <span class="n">out_ga</span><span class="p">,</span> <span class="n">out_eta</span><span class="p">]),</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">labels_aniso</span><span class="p">)</span>
 
@@ -994,7 +1030,7 @@ Then if we choose a 40 m window, Backus number <span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/Backus_Averaging_61_0.png" src="../../_images/Backus_Averaging_61_0.png" />
+<img alt="../../_images/Backus_Averaging_70_0.png" src="../../_images/Backus_Averaging_70_0.png" />
 </div>
 </div>
 </div>
@@ -1002,9 +1038,10 @@ Then if we choose a 40 m window, Backus number <span class="math notranslate noh
 <div class="section" id="conclusion">
 <h2>Conclusion 🏁<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Backus averaging allows to estimate the anisotropy of a layered rock</p></li>
-<li><p>Thomsen parameters of a layered rock are not independent</p></li>
-<li><p>Applying averaging in a rolling window allows to upscale the well logs (to match the seismic resolution)</p></li>
+<li><p>Backus averaging allows to estimate the anisotropy of a layered rock;</p></li>
+<li><p>Thomsen parameters of a layered rock are not independent;</p></li>
+<li><p>Effective 𝜀 of a layered rock depends mostly on V<sub>P</sub> contrast, while effective 𝛾 and 𝜂 correlate to V<sub>S</sub> contrast;</p></li>
+<li><p>Applying Backus averaging in a rolling window allows to upscale the well logs (to match the seismic resolution) and compute the effective anisotropy</p></li>
 </ul>
 </div>
 <div class="section" id="related-topics">
@@ -1014,7 +1051,7 @@ Then if we choose a 40 m window, Backus number <span class="math notranslate noh
 </ul>
 <hr class="docutils" />
 <p><sub>Created on May 13, 2022</sub> /
-<sub>Modified on May 25, 2022</sub></p>
+<sub>Modified on Aug 17, 2022</sub></p>
 </div>
 </div>
 
