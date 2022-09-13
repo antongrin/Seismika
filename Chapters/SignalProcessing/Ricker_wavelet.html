@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Complex trace attributes" href="Complex_trace_attr.html" />
-    <link rel="prev" title="Seismika" href="../intro.html" />
+    <link rel="prev" title="Seismika | Intro" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -92,7 +92,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../intro.html">
-   Seismika
+   Seismika | Intro
   </a>
  </li>
 </ul>
@@ -110,6 +110,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="Complex_trace_attr.html">
    Complex trace attributes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Fourier_animations.html">
+   Fourier transforms: animations
   </a>
  </li>
 </ul>
@@ -422,7 +427,7 @@
 <p>Then why does the phase differ from zero? How does the <em>true</em> zero-phase wavelet look like?</p>
 </div>
 <div class="section" id="zero-phase-ricker-wavelet">
-<h2>Zero-Phase Ricker wavelet ⚖️<a class="headerlink" href="#zero-phase-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
+<span id="ricker-wavelet-zero-phase"></span><h2>Zero-Phase Ricker wavelet ⚖️<a class="headerlink" href="#zero-phase-ricker-wavelet" title="Permalink to this headline">¶</a></h2>
 <p>The apparent contradiction mentioned above comes from the fact that the time-vector did not count in FFT.</p>
 <p>Indeed, to compute the spectrum we simply passed variable <code class="docutils literal notranslate"><span class="pre">w</span></code> to the <code class="docutils literal notranslate"><span class="pre">fft</span></code> function, ignoring time-vector <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p>
 <p>Thus, the above spectra were the spectra of the following signal (pay attention to the x-axis):</p>
@@ -613,7 +618,7 @@ However, the imaginary part of new wavelet is not perfectly zero due to computat
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Seismika</p>
+            <p class="prev-next-title">Seismika | Intro</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Complex_trace_attr.html" title="next page">
